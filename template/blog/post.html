@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>My Posts</h1>
+		<h2>{{ post.title }}</h2>
+		<small>Published on {{ post.published_at | date:"M d, Y" }} by {{ post.author | title}}</small>
+		<p>{{ post.content }}</p>
+
+		{% if request.user.is_authenticated and request.user == post.author %}
+		<p>
+			<a href="{% url 'post-edit' post.id %}">Edit</a>
+			<a href="{% url 'post-delete' post.id%}">Delete</a>
+		</p>
+		{% endif %}
+
+    <br>
+    <br>
+    <h2>{{ count }} Comments</h2>
+	   {% for comment in comments %}
+        <div class="comments" style="padding: 10px;">
+         <small style="color: teal" class="font-weight-bold">
+           {{ comment.name }}
+           <span class=" text-muted font-weight-normal">
+             {{ comment.pub_date }}
+            </span>
+          </small>
+          {{ comment.text | linebreaks }}
+        </div>
+        {% endfor %}
+
+    {% if request.user.is_authenticated  %}
+         <div class="card-body">
+        {% if new_comment %}
+        <div class="alert alert-success" role="alert">
+          Your comment has been successfully added
+        </div>
+        {% endif %}
+        <h3>Leave a comment</h3>
+        <form method="post" style="margin-top: 1.3em;">
+          {{ comment_form.as_p }}
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+        </form>
+      </div>
+    {% endif %}
+
+{% endblock content %}

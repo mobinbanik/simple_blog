@@ -28,8 +28,46 @@ class Post(models.Model):
     published_at = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=False)
+
     def __str__(self):
         return self.title
 
     class Meta:
         ordering = ['-published_at']
+
+
+class Comment(models.Model):
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        verbose_name="author",
+    )
+    text = models.TextField(
+        max_length=700,
+        verbose_name="text",
+        blank=False,
+        null=False,
+    )
+    name = models.CharField(
+        max_length=60,
+        verbose_name="name",
+        blank=False,
+        null=False,
+    )
+    pub_date = models.DateTimeField(
+        default=timezone.now,
+    )
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        null=False,
+        blank=False,
+    )
+
+    def __str__(self):
+        return f"comment <{self.author.username}>"
+
+    class Meta:
+        ordering = ['-pub_date']
+        verbose_name = "comment"
+        verbose_name_plural = "comments"
