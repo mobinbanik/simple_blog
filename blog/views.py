@@ -1,24 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.views.generic import DetailView
-
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
-
-
-class PostDetailView(DetailView):
-    model = Post
-
-    def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
-        context = super().get_context_data(**kwargs)
-        # Add in a QuerySet of all the posts
-        context = Post.objects.all()
-        for post in context:
-            comments = Comment.objects.filter(post=post)
-            context["count"] = comments.count()
-        return context
 
 
 @login_required
@@ -74,11 +58,11 @@ def create_post(request):
 
 
 def home(request):
-    posts = Post.objects.all()
+    posts = Post.objects.filter(active=True).order_by('-published_at')
     extra_detail = list()
     post_comment_dict = dict()
     for post in posts:
-        comments = Comment.objects.filter(post=post)
+        comments = Comment.objects.filter(post=post, active=True)
         count = comments.count()
         post_comment_dict["comment"] = {"count": count}
         post_comment_dict["post"] = post
@@ -90,8 +74,9 @@ def home(request):
 
 
 def show_post(request, _id):
-    post = Post.objects.get(id=_id)
-    comments = Comment.objects.filter(post=post)
+    queryset = Post.objects.filter(id=_id, active=True)
+    post = get_object_or_404(queryset, pk=_id)
+    comments = Comment.objects.filter(post=post, active=True)
     new_comment = None
     if request.method == 'POST':
         comment_form = CommentForm(data=request.POST)

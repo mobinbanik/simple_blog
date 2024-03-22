@@ -28,7 +28,9 @@ class Post(models.Model):
     published_at = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=False)
-
+    active = models.BooleanField(
+        default=True
+    )
     def __str__(self):
         return self.title
 
@@ -62,6 +64,10 @@ class Comment(models.Model):
         on_delete=models.CASCADE,
         null=False,
         blank=False,
+    )
+    # If you want to check comments first set default to False
+    active = models.BooleanField(
+        default=True,
     )
 
     def __str__(self):
