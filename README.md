@@ -3,13 +3,26 @@
 ## Description
 This is a simple weblog built using Django framework. Users can register and then post articles and comments. There are also API endpoints available for fetching a list of articles and their titles, filtered by category.
 
-## Installation
-To run the weblog locally, follow these steps:
-1. Clone the repository
-2. Install the requirements using `pip install -r requirements.txt`
-3. Run the migrations using `python manage.py migrate`
-4. Start the server using `python manage.py runserver`
+### Installation:
+1. Clone this repository:
+   ```
+   git clone https://github.com/mobinbanikarim/django_phonebook.git
+   ```
 
+2. Install dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
+
+3. Run migrations:
+   ```
+   python manage.py migrate
+   ```
+
+4. Start the development server:
+   ```
+   python manage.py runserver
+   ```
 ## URLs
 - Login: `/login/`
 - Logout: `/logout/`
@@ -30,5 +43,5 @@ To run the weblog locally, follow these steps:
 superuser: admin
 pass: admin
 
-## Contributors
-- [MobinBanikarim](https://github.com/Mobinbanikarim)
+## GitHub
+- [MobinBanikarim](https://github.com/mobinbanikarim/simple_blog)
