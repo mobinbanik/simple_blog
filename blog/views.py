@@ -16,7 +16,7 @@ def delete_post(request, _id):
     elif request.method == 'POST':
         post.delete()
         messages.success(request, 'The post has been deleted successfully.')
-        return redirect('posts')
+        return redirect('home')
 
 
 @login_required
@@ -33,7 +33,7 @@ def edit_post(request, _id):
         if form.is_valid():
             form.save()
             messages.success(request, 'The post has been updated successfully.')
-            return redirect('posts')
+            return redirect('home')
         else:
             messages.error(request, 'Please correct the following errors:')
             return render(request, 'blog/post_form.html', {'form': form})
@@ -51,7 +51,7 @@ def create_post(request):
             user.author = request.user
             user.save()
             messages.success(request, 'The post has been created successfully.')
-            return redirect('posts')
+            return redirect('home')
         else:
             messages.error(request, 'Please correct the following errors:')
             return render(request, 'blog/post_form.html', {'form': form})
@@ -70,12 +70,29 @@ def home(request):
     context = {
         'posts': extra_detail,
     }
-    return render(request, 'blog/home.html', context)
+    return render(request, 'blog/index.html', context)
 
 
-def show_post(request, _id):
-    queryset = Post.objects.filter(id=_id, active=True)
-    post = get_object_or_404(queryset, pk=_id)
+def about(request):
+    return render(request, 'blog/about.html')
+
+
+def contact(request):
+    return render(request, 'blog/contacts.html')
+
+
+def search(request):
+    return render(request, 'blog/fullwidth.html')
+
+
+def category(request, category_name):
+    return render(request, 'blog/grid.html')
+
+
+def show_post(request, slug):
+    queryset = Post.objects.filter(slug=slug, active=True)
+    post = get_object_or_404(queryset, slug=slug)
+    images = post.images_post.all()
     comments = Comment.objects.filter(post=post, active=True)
     new_comment = None
     if request.method == 'POST':
@@ -93,9 +110,10 @@ def show_post(request, _id):
 
     context = {
         'post': post,
+        'images': images,
         'comments': comments,
         'count': comments.count(),
         'new_comment': new_comment,
         'comment_form': comment_form,
     }
-    return render(request, 'blog/post.html', context)
+    return render(request, 'blog/single.html', context)

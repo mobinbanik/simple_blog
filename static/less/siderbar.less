@@ -1,0 +1,339 @@
+.sidebar {
+  .widget {
+	border: 1px solid #e2e2e2;
+	margin-bottom: 30px;
+	background-color: #FFFFFF;
+	padding: 0px;
+	position: relative;
+	.widget-title {
+	  font-size: 24px;
+	  font-family: 'Montserrat';
+	  color: #444444;
+	  letter-spacing: -0.5px;
+	  line-height: 1em;
+	  font-weight: 700;
+	  padding-left: 35px;
+	  padding-top: 30px;
+	  a{
+		color: #444444;
+		text-decoration: none;
+		&:hover{
+		  color: @brand-color;
+		  text-decoration: none;
+		  .transition();
+		}
+	  }
+	}
+	.widget-content {
+	  display: inline-block;
+	  padding: 20px 34px 55px 34px;
+	  width: 100%;
+	  img {
+		width: 100%;
+	  }
+	  p {
+		padding: 0;
+		margin: 0;
+		font-size: 13px;
+		font-family: @font-text;
+		color: @color-text1;
+		line-height: 26px;
+		margin-top: 30px;
+	  }
+	  h3 {
+		font-size: 18px;
+		color: #444444;
+		font-family: 'Montserrat';
+		font-weight: 700;
+		letter-spacing: 0.5px;
+	  }
+	  & > ul {
+		list-style-type: none;
+		margin-top: -20px;
+		padding: 0px;
+		display: block;
+		li {
+		  padding: 5px 0;
+		  border-bottom: 1px dashed #dddddd;
+		  font-family: @font-title;
+		  line-height: 54px;
+		  font-size: 11px;
+		  text-transform: uppercase;
+		  a {
+			color: @color-text1;
+			text-decoration: none;
+			&:hover {
+			  color: @brand-color;
+			}
+		  }
+		  &:last-child {
+			margin-bottom: -33px;
+			border-bottom: none;
+		  }
+
+		}
+	  }
+	  .widget-more {
+		float: left;
+		margin-top: 15px;
+	  }
+	}
+	.widget-content.sm {
+	  margin: -20px 0 48px 0;
+	  padding: 0 30px;
+	}
+	.widget-recent {
+	  width: 100%;
+	  border-bottom: 1px dashed #e2e2e2;
+	  margin-bottom: 30px;
+	  img {
+		width: 100%;
+		height: 140px;
+	  }
+	   h4 {
+		padding: 0;
+		text-decoration: none;
+	  	margin-top: 20px;
+		 color: @color-title;
+		 font-family: @font-title;
+		 font-weight: 700;
+		}
+	  a{
+		text-decoration: none;
+		color: @color-title;
+		font-size: 18px;
+		letter-spacing: -0.38px;
+		line-height: 24px;
+		font-family: @font-title;
+		&:hover{
+		  color: @brand-color;
+		  .transition();
+		}
+	  }
+
+	  p {
+		font-size: 13px;
+		line-height: 24px;
+		color: @color-text;
+		margin: 0 0 30px 0;
+		font-family:@font-text;
+	  }
+	}
+	.widget-recent.last {
+	  border: none;
+	  margin-bottom: -30px;
+
+	  img {
+		width: 100%;
+		height: 140px;
+	  }
+	}
+  }
+
+  .widget-sub {
+	border: 5px solid darken(@brand-color, 8%);
+	background: #ffb661;
+	width: 100%;
+	height: 305px;
+	display: block;
+	margin-bottom: 30px;
+	padding: 30px;
+	h5 {
+	  padding: 0;
+	  margin: 30px 0 30px 0;
+	  font-weight: bold;
+	  font-family: @font-title;
+	  font-size: 24px;
+	  color: #FFFFFF;
+	  letter-spacing: -0.50px;
+	  line-height: 11px;
+	}
+	p {
+	  padding: 0;
+	  margin: 0;
+	  color: #FFFFFF;
+	  font-size: 14px;
+	  font-family: @font-text;
+	  line-height: 24px;
+
+	}
+  }
+
+  .widget-sub.social {
+	width: 100%;
+	min-height: 350px;
+	background: #FFFFFF;
+	display: block;
+	margin-bottom: 30px;
+	padding: 30px;
+	border: 1px solid #dddddd;
+	& > ul {
+	  list-style-type: none;
+	  margin: 0px;
+	  padding: 0px;
+	  display: block;
+	  li {
+		padding: 15px 0 60px 0;
+		text-align: left;
+		color: #888888;
+		font-family: @font-title;
+		border-bottom: 1px dashed #dddddd;
+		div {
+		  color: #888888;
+		  font-size: 12px;
+		  text-align: right;
+		  padding: 5px 10px;
+		  text-transform: uppercase;
+		  border: 1px solid #e2e2e2;
+		  border-radius: 15px;
+		  display: block;
+		  float: right;
+		  font-weight: 500;
+		  line-height: 15px;
+		  margin-top: 8px;
+		}
+		&:last-child {
+		  border: none;
+		}
+		&:first-child {
+		  margin: 0px;
+		}
+		a {
+		  color: #888888;
+		  text-decoration: none;
+		}
+		.social-widget {
+		  float: left;
+		  span {
+			color: #888888;
+			font-family: @font-title;
+			font-size: 12px;
+			text-align: left;
+			padding-left: 15px;
+			text-transform: uppercase;
+			&:hover {
+			  color: @brand-color;
+			  .transition();
+			}
+		  }
+		  .fa-facebook {
+			font-size: 14px;
+			color: #FFFFFF;
+			width: 47px;
+			height: 47px;
+			line-height: 47px;
+			text-align: center;
+			background: #3b5998;
+			border-radius: 50px;
+			&:hover {
+			  color: #e2cfff;
+			}
+		  }
+		  .fa-twitter {
+			font-size: 14px;
+			color: #FFFFFF;
+			width: 47px;
+			height: 47px;
+			background: #55acee;
+			line-height: 47px;
+			text-align: center;
+			border-radius: 50px;
+			&:hover {
+			  color: #e2cfff;
+			}
+		  }
+		  .fa-google-plus {
+			font-size: 14px;
+			color: #FFFFFF;
+			text-transform: uppercase;
+			width: 47px;
+			height: 47px;
+			background: #dc4e41;
+			line-height: 47px;
+			text-align: center;
+			border-radius: 30px;
+			&:hover {
+			  color: #e2cfff;
+			}
+		  }
+		  .fa-instagram {
+			font-size: 14px;
+			color: #FFFFFF;
+			width: 47px;
+			height: 47px;
+			background: #3f729b;
+			line-height: 47px;
+			text-align: center;
+			border-radius: 50px;
+			&:hover {
+			  color: #e2cfff;
+			}
+		  }
+		}
+	  }
+	}
+  }
+
+  .widget-sub-s {
+	width: 100%;
+	/* height: 50px; */
+	display: block;
+	background: #FFFFFF;
+	margin: 30px 0 0 0;
+	border-radius: 45px;
+	padding: 26px 0;
+	.sign_up_form {
+	  width: 60%;
+	  height: auto;
+	  background: none;
+	  float: left;
+	  margin: -20px 0 0 23px;
+	  font-family: Arial sans-serif;
+	  font-style: normal;
+	  color: #dddddd;
+	  font-size: 14px;
+	  input {
+		border: none;
+		font-family: Arial sans-serif;
+		font-style: normal;
+		font-size: 14px;
+	  }
+	}
+	div {
+	  position: absolute;
+	  top: -2px;
+	  right: -89px;
+	}
+  }
+
+}
+
+.widget .widget-tags {
+  margin: 0;
+  padding: 0;
+}
+
+.widget .widget-tags a {
+  display: inline-block;
+  font-size: 10px;
+  line-height: 11px;
+  font-family: @font-title;
+  font-weight: normal;
+  color: #888;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 30px;
+  border: 1px solid #e2e2e2;
+  padding: 7px 13px;
+  margin-bottom: 5px;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+.widget .widget-tags a:hover {
+  text-decoration: none;
+  background-color: #eea236;
+  border: 1px solid darken(@brand-color, 10%);
+  color: #FFFFFF;
+}

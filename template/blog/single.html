@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+	<div class="wrapper">
+	    <section class="section-content">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-8 col-md-8">
+                        <article class="content-item">
+							<div class="entry-media">
+								<div class="post-title">
+									<h2><a href="{% url 'post' post.slug %}">{{ post.title }}</a></h2>
+									<div class="entry-date">
+										<ul>
+											<li>
+												<a href='{% url 'category' post.category.name %}'>{{ post.category }}</a>
+											</li>
+											<li> {{ post.published_at }} </li>
+											<li> {{ count }} COMMENT </li>
+										</ul>
+									</div>
+								</div>
+								<div class="bubble-line"></div>
+                                <div class="post-content">
+                                    {% if post.type == 3 %}
+                                    	{% include 'blog/components/post-content/slider.html' with images=images %}
+                                    {% endif %}
+                                    {% if post.type != 3%}
+                                    	 <img src="{{ post.thumbnail.url }}" alt="{{ post.thumbnail.name }}">
+                                    {% endif %}
+                                    {{ post.content | safe }}
+
+                                    {% if post.type == 2 %}
+                                    	{% include 'blog/components/post-content/slider.html' with images=images %}
+                                    {% endif %}
+                                </div>
+                                <div class="bubble-line"></div>
+								<div class="post-footer">
+									<div class="row">
+										<div class="col-sm-5 s-tags">
+											<a href="javascript:;">clean</a>
+											<a href="javascript:;">minimal</a>
+											<a href="javascript:;">cloudy</a>
+										</div>
+										<div class="col-sm-7 text-right">
+											<div class="content-social">
+												<a href="javascript:;"><i
+														class="fa fa-facebook"></i><span>Facebook</span></a>
+												<a href="javascript:;"><i class="fa fa-twitter"></i><span>Twitter</span></a>
+												<a href="javascript:;"><i
+														class="fa fa-pinterest"></i><span>Pinterest</span></a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</article>
+
+                        {% include 'blog/components/post-content/related-posts.html' %}
+                        {% include 'blog/components/post-content/comments.html' %}
+                        {% include 'blog/components/post-content/form-write-comment.html' %}
+					</div>
+                    {% include 'blog/components/side-bar/side-bar.html' %}
+                </div>
+			</div>
+		</section>
+	</div>
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="section-content">
+		<div class="container">
+			<div class="row ">
+				<div class="col-md-1 full-width-content">
+                    {% include 'blog/components/post-items/post-fullwidth.html' %}
+                    {% include 'blog/components/post-items/post-fullwidth.html' %}
+                    {% include 'blog/components/post-items/post-fullwidth.html' %}
+                    {% include 'blog/components/post-items/post-fullwidth.html' %}
+                    {% include 'blog/components/post-items/post-fullwidth.html' %}
+                    {% include 'blog/components/post-items/post-navigation.html' %}
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+{% endblock content %}

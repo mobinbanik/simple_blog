@@ -1,39 +1,158 @@
 {%load static %}
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    <title>My Site</title>
-  </head>
-  <body>
-  	<header>
-  		{%if request.user.is_authenticated %}
-  			<a href="{% url 'posts' %}">My Posts</a>
-  			<a href="{% url 'post-create' %}">New Post</a>
-            <br>
-  			<span> {{ request.user.username | title }}</span>
-  			<a href="{% url 'logout' %}">Logout</a>
-  		{%else%}
-  			<a href="{% url 'login' %}">Login</a>
-  			<a href="{% url 'register' %}">Register</a>
-  		{%endif%}
-  	</header>
-  	<main>
-	  	{% if messages %}
-			<div class="messages">
-			{% for message in messages %}
-				<div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>
-					{{ message }}
-				</div>
-			{% endfor %}
-			</div>
-		{% endif %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+        <title>Cloudy town</title>
+        <meta name="keywords" content="HTML5,CSS3,HTML,Template,Themeton" >
+        <meta name="description" content="Cloudy Town - Simple Blog HTML Template">
+        <meta name="author" content="Themeton">
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.png' %}"/>
+        <!-- Fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic%7CPlayball%7CMontserrat:400,700' rel='stylesheet' type='text/css'>
 
-	    {%block content%}
-	    {%endblock content%}
-  	</main>
+        <!-- Bootstrap -->
+        <link rel="stylesheet" type="text/css" href="{% static 'vendors/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'vendors/bootstrap/css/bootstrap-theme.min.css' %}">
 
-  </body>
+        <!-- Fontawesome -->
+        <link rel="stylesheet" type="text/css" href="{% static 'vendors/font-awesome/css/font-awesome.min.css' %}">
+
+        <!-- Swiper -->
+        <link rel="stylesheet" type="text/css" href="{% static 'vendors/swiper/css/swiper.min.css' %}">
+        <!-- Magnific-popup -->
+
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/welcome.css' %}">
+    </head>
+    <body>
+    <!-- Header -->
+    <header id="header">
+        <!-- Home Title -->
+        <div class="logo" data-bg-image="{% static 'images/bg-header.jpg' %}">
+            <h1 style="color: #000000">
+               Raika Blog <a href="{% url 'home' %}"></a>
+            </h1>
+            <p> A problem is a chance for you to do your best.</p>
+        </div>
+        <!-- Menu -->
+        <div class="menu-container">
+            <div class="container">
+                <div class="row">
+                    <div  class="col-md-7">
+                        <nav class="main-nav">
+                            <ul>
+                                <li class=" current-menu-item menu-item-has-children">
+                                    <a href="{% url 'home' %}">Home</a>
+                                </li>
+                                <li><a href="{% url 'search' %}">Full width</a></li>
+                                <li><a href="{% url 'post' '1' %}">Single post</a></li>
+                                <li><a href="{% url 'about' %}">about</a></li>
+                                <li><a href="{% url 'contact' %}">Contact</a></li>
+                            </ul>
+                            <a href="javascript:;" id="close-menu"> <i class="fa fa-close"></i></a>
+                        </nav>
+                                                </div>
+                    <div class=" col-md-5 h-search">
+                        <form class="search_form">
+                            <input type="text" name="2" placeholder="Search and hit enter...">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                        <div class="head-social">
+                            <a class="socials" href="#"><i class="fa fa-facebook"></i></a>
+                            <a class="socials" href="#"><i class="fa fa-twitter"></i></a>
+                            <a class="socials" href="#"><i class="fa fa-pinterest"></i></a>
+                            <a class="socials" href="#"><i class="fa fa-instagram"></i></a>
+                            <a class="socials" href="#"><i class="fa fa-rss"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+        <main>
+            {%block content%}
+            {%endblock content%}
+        </main>
+        <section class="instagram-follow">
+            <a href="javascript:;"><h2> FOLLOW ME ON INSTAGRAM </h2></a>
+        </section>
+        <footer id="footer">
+            <div class="footer-slide">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide fslide col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                            <a href="#" class="thumbnails"><img src="{% static 'images/footer/photos2.jpg' %}" alt="Image"></a>
+                        </div>
+                        <div class="swiper-slide fslide col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                            <a href="#" class="thumbnails"><img src="{% static 'images/footer/photos1.jpg' %}" alt="Image"></a>
+                        </div>
+                        <div class="swiper-slide fslide col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                            <a href="#" class="thumbnails"><img src="{% static 'images/footer/01-footer.jpg' %}" alt="Image"></a>
+                        </div>
+                        <div class="swiper-slide fslide col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                            <a href="#" class="thumbnails"><img src="{% static 'images/footer/02-footert.jpg' %}" alt="Image"></a>
+                        </div>
+                        <div class="swiper-slide fslide col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                            <a href="#" class="thumbnails"><img src="{% static 'images/footer/photos4.jpg' %}" alt="Image"></a>
+                        </div>
+
+                        <div class="swiper-slide fslide col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                            <a href="#" class="thumbnails"><img src="{% static 'images/footer/photos5.jpg' %}" alt="Image"></a>
+                        </div>
+                        <div class="swiper-slide fslide col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                            <a href="#" class="thumbnails"><img src="{% static 'images/footer/photos7.jpg' %}" alt="Image"></a>
+                        </div>
+                        <div class="swiper-slide fslide col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                            <a href="#" class="thumbnails"><img src="{% static 'images/footer/photos6.jpg' %}" alt="Image"></a>
+                        </div>
+                        </div>
+                    <div class="swiper-button-prev circle-arrow"><i class="fa fa-chevron-left"></i></div>
+                    <div class="swiper-button-next circle-arrow"><i class="fa fa-chevron-right"></i></div>
+                    <div class="swiper-center"><a href="javascript:;"><i class="fa fa-instagram"></i>Cloudy town</a></div>
+                    </div>
+            </div>
+            <div class="sub-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="widget">
+                            </div>
+                            <div class="widget footer-cp-text">
+                                <p>
+                                    &copy; 2016. All rights reserved. Cloudytown made with love by <a href="http://themeforest.net/user/themeton/portfolio" target="_blank">Themeton</a>  Designs.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+
+
+        <script type="text/template" id="tpl-bubble-left">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 15 30" enable-background="new 0 0 15 30" xml:space="preserve">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-miterlimit="10" d="M0,29.4c0,0,7.5,0,7.5-7c0,0,7,0,7-7c0-0.1,0-0.1,0-0.2c0-0.1,0-0.1,0-0.2c0-7-7-7-7-7c0-7-7.5-7-7.5-7"/>
+            </svg>
+        </script>
+        <script type="text/template" id="tpl-bubble-right">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 15 30" enable-background="new 0 0 15 30" xml:space="preserve">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-miterlimit="10" d="M15,29.4c0,0-7.5,0-7.5-7c0,0-7,0-7-7c0-0.1,0-0.1,0-0.2c0-0.1,0-0.1,0-0.2c0-7,7-7,7-7c0-7,7.5-7,7.5-7"/>
+            </svg>
+        </script>
+        <!-- Include jQuery and Scripts -->
+        <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendors/bootstrap/js/bootstrap.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendors/jquery.waypoints.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendors/isotope.pkgd.min.js' %}"></script>
+        <!-- Swiper -->
+        <script type="text/javascript" src="{% static 'vendors/swiper/js/swiper.min.js' %}"></script>
+        <!-- Magnific-popup -->
+        <script type="text/javascript" src="{% static 'js/scripts.js' %}"></script>
+    </body>
 </html>
+

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="section-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-md-8">
+                {% include 'blog/components/post-items/post-gallery.html' %}
+                {% include 'blog/components/post-items/post-vertical.html' %}
+                {% include 'blog/components/post-items/quote.html' %}
+                {% include 'blog/components/post-items/post-slider.html' %}
+                {% include 'blog/components/post-items/post-audio.html' %}
+                {% include 'blog/components/post-items/post-video.html' %}
+                {% include 'blog/components/post-items/post-simple.html' %}
+                {% include 'blog/components/post-items/post-navigation.html' %}
+            </div>
+            {% include 'blog/components/side-bar/side-bar.html' %}
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

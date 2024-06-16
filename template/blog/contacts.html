@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <section class="section-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-8 col-md-8">
+					<article class="contact-media">
+						   <h2 class="contact-media-title">Contact</h2>
+						<div class="bubble-line"></div>
+						<div class="contact-content">
+							<img src="{%  static 'images/06-Contact.jpg' %}" alt="image">
+							<h3>
+								It is a long established fact that a reader will be distracted by the readable content
+								of a
+								page when looking at its layout.
+							</h3>
+							<p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+								has
+								been the industry's standard dummy text ever since the 1500s, when an unknown printer
+								took a
+								galley of type and scrambled it to make a type specimen book.
+							</p>
+							<div class="contact-row">
+								<form>
+									<div class="contact-form">
+										<p>  NAME (required)	</p>
+										<input type="text" name="name" placeholder="">
+										<p> E-MAIL(required) </p>
+										<input type="text" name="name" placeholder="">
+										<p>SUBJECT</p>
+										<input type="text" name="name" placeholder="">
+										<p> MESSAGE</p>
+										<textarea placeholder=""></textarea>
+									</div>
+									<div class="contact-submit">
+										<a href="javascript:;" class="button">Send message</a>
+									</div>
+								</form>
+							</div>
+						</div>
+					</article>
+				</div>
+				{% include "blog/components/side-bar/side-bar.html" %}
+            </div>
+		</div>
+	</section>
+{% endblock content %}
